@@ -1,0 +1,67 @@
+#include<iostream>
+using namespace std;
+void push(int stk[],int &top,int &n)
+{
+	if(top==4) cout<<"Overflow";
+	else
+	{
+		int item;
+		cout<<"Enter element:"; cin>>item;
+             	stk[++top]=item;
+	        n++;
+	}
+}
+//*****************************************
+void pop(int stk[],int &top,int &n)
+{
+	if(top==-1) cout<<"Underflow";
+	else
+	{
+		cout<<"\nThe deleted element is:"<<stk[top];
+		--top;
+		n--;
+	}
+}
+//*****************************************
+void traverse(int stk[],int &top,int &n)
+{
+	if(top==-1)  cout<<"Empty stack";
+	else
+	{
+		cout<<"\n********************\n";
+		cout<<"\nNo. of elements are:"<<n;
+                cout<<"\nStack elements from Top to Bottom:";
+                for(int i=top;i>=0;i--) cout<<stk[top]<<" ";
+                cout<<"\n**************************\n";
+        }
+}
+//*****************************************
+int main()
+{
+	int stk[5] , n=0 , top=-1 , ch;
+	char ch1;
+	cout<<"Stack operation\n";
+	do{
+		cout<<"1.Push\n2.Pop\n3.Traverse\n4.Exit\nEnter your choice:\n";
+		cin>>ch;
+		switch(ch)
+		{
+			case 1:
+				push(stk,top,n);
+				traverse(stk,top,n);
+				break;
+			case 2:
+				pop(stk,top,n);
+				traverse(stk,top,n);
+				break;
+			case 3:
+				traverse(stk,top,n);
+			        break;
+			case 4:
+				exit(-1);
+			default:
+				cout<<"Wrong Entry";
+		}
+		cout<<"Do you want to continue?(Press y/Y)"; cin>>ch1;
+	}while(ch1=='y' || ch1=='Y');
+}
