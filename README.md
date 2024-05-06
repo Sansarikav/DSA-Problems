@@ -1,5 +1,5 @@
 # DSA-Problems
-This repository contains a collection of data structures and algorithms questions. The questions are organized by topic, and each question includes a step-by-step solution.
+This repository contains a collection of data structures and algorithms questions. The questions are organized by topic, and each question includes a solution code.
 ## Topics
 * Arrays
 * Linked lists
