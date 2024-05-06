@@ -1,0 +1,97 @@
+#include<iostream>
+ using namespace std;
+ struct QNode
+ {
+ 	int info;
+ 	QNode *next;
+ };
+ //************************************
+ QNode *rear=NULL,*front=NULL,*temp,*newn;
+ int n=0;
+ //************************************
+ void getnode()
+ {
+ 	newn=new QNode;
+ 	if(newn==NULL)
+ 	cout<<"Overflow";
+ 	else
+ 	{
+ 		cout<<"Enter element:";
+ 		cin>>newn->info;
+ 		newn->next=NULL;
+	 }
+ }
+ //*************************************
+ void Enqueue()
+ {
+ 	getnode();
+ 	if(rear==NULL)
+ 	{
+ 		front=newn;
+ 		rear=newn;
+	}
+	else
+	{
+		rear->next=newn;
+		rear=newn;
+		n++;
+	}
+ }
+ //***************************************
+ void Dequeue()
+ {
+ 	if(rear==NULL)
+ 		cout<<"Underflow";
+	else
+	{
+		front=front->next;
+		n--;
+	}
+ }
+ //****************************************
+ void Traverse()
+ {
+ 	if(rear==NULL)
+ 	{
+ 		cout<<"Empty queue";
+	 }
+	 else{
+ 	    temp=rear;
+ 	    while(temp!=NULL) 
+ 	    {
+ 	    cout<<temp->info;
+ 	    temp=temp->next;
+ 	    }
+    }
+ }
+ //****************************************
+ int main()
+ {
+ 	cout<<"Queue Operations:";
+ 	int ch;
+ 	char ch1;
+ 	do
+	{
+		cout<<"\n1.Insert\n2.Delete\n3.Traverse\n4.Exit\nEnter your choice:";
+		cin>>ch;
+		switch(ch)
+		{
+			case 1:
+				Enqueue();
+				Traverse();
+				break;
+			case 2:
+				Dequeue();
+				Traverse();
+				break;
+			case 3:
+				Traverse();
+				break;
+			case 4:
+				exit(-1);
+			default:
+				cout<<"\nWrong input";
+		}
+		cout<<"\nDo you want to continue?(Press y/Y)"; cin>>ch1;
+    }while(ch1=='y' || ch1=='Y');
+ }
