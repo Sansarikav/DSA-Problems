@@ -1,0 +1,66 @@
+#include<iostream>
+using namespace std;
+void enqueue(int que[],int &r,int &n)
+{
+	if(r==4) cout<<"Overflow";
+	else
+	{
+		int item;
+		cout<<"\nEnter the element:"; cin>>item;
+		que[++r]=item;
+		n++;
+	}
+}
+//***********************************
+void dequeue(int que[],int &f,int &r,int &n)
+{
+	if(f==r) cout<<"Underflow";
+	else
+	{
+		cout<<"\nThe deleted element is:"<<que[f+1];
+		f++;
+		n--;
+	}
+}
+//***********************************
+void traverse(int que[],int &r,int &f,int &n)
+{
+	if(f==-1 && r==-1) cout<<"\nEmpty queue";
+	else
+	{
+		cout<<"\n*****************\n";
+		cout<<"No.of elements are:"<<n;
+		cout<<"\nQueue elements are:";
+		for(int i=f+1;i<=r;i++) cout<<que[i]<<" ";
+	}
+}
+//************************************
+int main()
+{
+	int que[5] , r=-1 , f=-1 , n=0 , ch;
+	char ch1;
+	do
+	{
+		cout<<"\n1.Insert\n2.Delete\n3.Traverse\n4.Exit\nEnter your choice:";
+		cin>>ch;
+		switch(ch)
+		{
+			case 1:
+				enqueue(que,r,n);
+				traverse(que,r,f,n);
+				break;
+			case 2:
+				dequeue(que,f,r,n);
+				traverse(que,r,f,n);
+				break;
+			case 3:
+				traverse(que,r,f,n);
+				break;
+			case 4:
+				exit(-1);
+			default:
+				cout<<"\nWrong input";
+		}
+		cout<<"\nDo you want to continue?(Press y/Y)"; cin>>ch1;
+	}while(ch1=='y' || ch1=='Y');
+}
